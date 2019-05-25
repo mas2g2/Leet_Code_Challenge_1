@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+// Brute force solution for finding indices of numbers that give us the target as a sum
 int *two_sum(int *arr, int target,int size){
 	
 	int i,j;
+	// Allocates memory for storing the indices of the two numbers that add up to the target
 	int *sol = (int*)malloc(sizeof(int)*2);
 	for(i = 0; i < size - 1; i++){
 		for(j = i + 1; j < size; j++){
-			int sum = arr[i] + arr[j];
-		
+			int sum = arr[i] + arr[j];		
 			if( sum == target){
 				sol[0] = i;
 				sol[1] = j;
@@ -26,7 +27,9 @@ int max(int *arr, int size){
 	}
 	return max;
 }
-
+// Optimal solution for finding wo indices of numbers that add up to target
+// This optimal solution uses the same approach from counting sort to find the numbers
+// that add up to the target
 int *sum(int *arr, int target, int size){
 	const int max_val = max(arr,size)+1;
 	int b[max_val],i,num1,num2,num1_index,num2_index;
